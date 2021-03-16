@@ -12,6 +12,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productid;
 
+    @Id
     public Long getId() {
         return productid;
     }
