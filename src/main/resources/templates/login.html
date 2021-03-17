@@ -57,26 +57,14 @@
 
 <h1 style="color: white; letter-spacing: 5px; padding: 10px;">SPILLER NU</h1>
 
-<form action="/postCreate" method="post">
-  <label for="firstname">Fornavn</label><br />
-  <input type="text" id="firstname" name="firstname"/><br /><br />
-
-  <label for="lastname">Efternavn</label><br />
-  <input type="text" id="lastname" name="lastname" /><br /><br />
-
-  <label for="username">Brugernavn</label><br />
-  <input type="text" id="username" name="username"/><br /><br />
-
-  <label for="email">Email</label><br />
-  <input type="text" id="email" name="email"/><br /><br />
-
+<form action="/postLogin" class="logincreateform" method="post">
+  <label for="username">Username</label><br />
+  <input type="username" id="username" name="username" /><br /><br />
   <label for="password">Password</label><br />
-  <input type="text" id="password" name="password" /><br /><br />
-
-  <label for="phone">Phone</label><br />
-  <input type="text" id="phone" name="phone" /><br /><br />
-
-  <input type="submit" value="Submit" />
+  <input type="password" id="password" name="password" /><br /><br />
+  <!-- <label for="password">Id</label><br />
+  <input type="text" id="text" name="idmanager" /><br /><br /> -->
+  <input type="submit" value="Login" />
 </form>
 
 

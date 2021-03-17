@@ -30,10 +30,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
         .antMatchers( "/css/**").permitAll()
         .antMatchers( "/img/**").permitAll()
+
                 .antMatchers("/admin").hasRole("ADMIN")
+
+
                 .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+
+
                 .antMatchers("/").permitAll()
-                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/createaccount").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
         ;
