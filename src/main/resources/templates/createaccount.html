@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -57,24 +58,30 @@
       
         <h1 style="color: white; letter-spacing: 5px; padding: 10px;">SPILLER NU</h1>
 
-      <form action="/postCreate" class="logincreateform" method="post">
+      <form th:action="@{/newuser}" th:object="${user}" class="logincreateform" method="post">
           <label for="firstname">Fornavn</label><br />
-          <input type="text" id="firstname" name="firstname"/><br /><br />
+          <input type="text" th:field="*{firstname}" id="firstname" name="firstname"/><br /><br />
 
           <label for="lastname">Efternavn</label><br />
-          <input type="text" id="lastname" name="lastname" /><br /><br />
+          <input type="text" th:field="*{lastname}" id="lastname" name="lastname" /><br /><br />
 
           <label for="username">Brugernavn</label><br />
-          <input type="text" id="username" name="username"/><br /><br />
+          <input type="text" th:field="*{username}" id="username" name="username"/><br /><br />
 
           <label for="email">Email</label><br />
-          <input type="text" id="email" name="email"/><br /><br />
+          <input type="text" th:field="*{email}" id="email" name="email"/><br /><br />
 
           <label for="password">Password</label><br />
-          <input type="text" id="password" name="password" /><br /><br />
+          <input type="text" th:field="*{password}" id="password" name="password" /><br /><br />
+
+          <label for="password">Alder</label><br />
+          <input type="number" th:field="*{age}" id="age" name="age" /><br /><br />
 
           <label for="phone">Telefonnr.</label><br />
-          <input type="text" id="phone" name="phone" /><br /><br />
+          <input type="text" th:field="*{phone}" id="phone" name="phone" /><br /><br />
+
+          <input type="hidden" th:field="*{active}" id="active" name="active" value="1"/>
+          <input type="hidden" th:field="*{roles}" id="roles" name="roles" value="USER"/><br /><br />
 
           <input type="submit" value="Opret profil" />
       </form>

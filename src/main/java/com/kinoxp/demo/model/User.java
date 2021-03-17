@@ -16,6 +16,7 @@ public class User {
     private String password;
     private boolean active;
     private String roles;
+    private int phone;
     private int age;
 
 
@@ -90,5 +91,9 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public int getPhone() { return phone; }
+
+    public void setPhone(int phone) { this.phone = phone; }
 
 }
