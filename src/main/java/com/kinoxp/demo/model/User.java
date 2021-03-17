@@ -1,38 +1,31 @@
 package com.kinoxp.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+
 
 @Entity
-public class Customer {
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customerid;
+    private int userid;
 
     private String firstname;
     private String lastname;
+    private String username;
     private String email;
-
-
-
     private String password;
+    private boolean active;
+    private String roles;
     private int age;
 
-    @Id
-    public int getCustomerid() {
-        return customerid;
+
+
+    public int getUserid() {
+        return userid;
     }
 
-    public void setCustomerid(int customerid) {
-        this.customerid = customerid;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
     public String getFirstname() {
@@ -74,6 +67,28 @@ public class Customer {
     public void setPassword(String password) {
         this.password = password;
     }
+    public boolean isActive() {
+        return active;
+    }
 
+     public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
 }
