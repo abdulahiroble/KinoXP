@@ -13,7 +13,7 @@ public class UserRestController {
 
     private UserRepository userRepository;
 
-    // @PostMapping(value="/newuser")
+    // @PostMapping(value="/newuser", consumes = "application/json")
     // @ResponseStatus(HttpStatus.CREATED)
     // public User newuser(@RequestBody User user) {
 
