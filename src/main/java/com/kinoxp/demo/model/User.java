@@ -33,6 +33,10 @@ public class User {
         this.age = age;
     }
 
+    public User () {
+
+    }
+
 
     public int getUserid() {
         return userid;

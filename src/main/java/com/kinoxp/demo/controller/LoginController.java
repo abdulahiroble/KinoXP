@@ -50,10 +50,10 @@ public class LoginController {
     }
 
 
-    // @GetMapping("/createaccount")
-    // public String createAccount(Model userModel) {
-    //     userModel.addAttribute("user", new User(null, null, null, null, null, null, null, 0, 0));
-    //     return "createaccount";
-    // }
+    @GetMapping("/createaccount")
+    public String createAccount(Model userModel) {
+        userModel.addAttribute("user", new User());
+        return "createaccount";
+    }
 
 }
