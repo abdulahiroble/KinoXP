@@ -33,7 +33,7 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping(value="/newuser", consumes = "application/json")
+    @PostMapping(value="/newuser")
     @ResponseStatus(HttpStatus.CREATED)
     public User newuser(@RequestBody User user) {
 
