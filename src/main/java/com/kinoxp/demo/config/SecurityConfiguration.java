@@ -30,7 +30,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
         .antMatchers( "/css/**").permitAll()
         .antMatchers( "/img/**").permitAll()
-        .antMatchers( "/newuser**").permitAll()
 
 
                     .antMatchers("/admin").hasRole("ADMIN")
@@ -42,14 +41,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
     }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers("/resources/", "/static/", "/css/", "/js/", "/img/");
-    }
-
 
 
     @Bean
