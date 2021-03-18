@@ -25,21 +25,34 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
     }
 
+    // @Override
+    // protected void configure(HttpSecurity http) throws Exception {
+    //     http.authorizeRequests()
+    //     .antMatchers( "/css/**").permitAll()
+    //     .antMatchers( "/img/**").permitAll()
+
+
+    //                 .antMatchers("/admin").hasRole("ADMIN")
+    //             .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+    //             .antMatchers("/**").permitAll()
+           
+    //             .and().formLogin().permitAll()
+                
+    //     ;
+
+    //     http.csrf().disable();
+
+    // }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .antMatchers( "/css/**").permitAll()
-        .antMatchers( "/img/**").permitAll()
-
-
-                    .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/user").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/").permitAll()
-                .and().formLogin().loginPage("/login").permitAll()
-        ;
+                .antMatchers("/**").permitAll()
+                .and().formLogin();
 
-        http.csrf().disable();
-
+                http.csrf().disable();
     }
 
 
