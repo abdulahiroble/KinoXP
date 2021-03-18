@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userid;
@@ -16,8 +17,25 @@ public class User {
     private String password;
     private boolean active;
     private String roles;
+    private int phone;
     private int age;
 
+
+    public User (String firstname, String lastname, String username, String email, String password, Boolean active, String roles, int phone, int age) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.active = active;
+        this.roles = roles;
+        this.phone = phone;
+        this.age = age;
+    }
+
+    public User () {
+
+    }
 
 
     public int getUserid() {
@@ -90,5 +108,9 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public int getPhone() { return phone; }
+
+    public void setPhone(int phone) { this.phone = phone; }
 
 }
