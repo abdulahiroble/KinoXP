@@ -11,23 +11,40 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String movieid;
+    private int movieid;
 
     private String title;
     private String genre;
     private String actor;
     private int age;
     private int length;
-    private Date date;
+    private String date;
     private int time;
     private String hall;
 
+    public Movie (String title, String genre, String actor, int age, int length, String date, int time, String hall) {
+        this.title = title;
+        this.genre = genre;
+        this.actor = actor;
+        this.age = age;
+        this.length = length;
+        this.date = date;
+        this.time = time;
+        this.hall = hall;
+
+    }
+
+
+    public Movie () {
+
+    }
+
     @Id
-    public String getMovieid() {
+    public int getMovieid() {
         return movieid;
     }
 
-    public void setMovieid(String movieid) {
+    public void setMovieid(int movieid) {
         this.movieid = movieid;
     }
 
@@ -71,11 +88,11 @@ public class Movie {
         this.length = length;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
