@@ -59,4 +59,9 @@ public class LoginController {
         return "createaccount";
     }
 
+    @GetMapping("/register_success")
+    public String createSuccess() {
+        return "register_success";
+    }
+
 }
