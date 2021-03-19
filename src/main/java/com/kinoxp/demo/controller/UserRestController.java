@@ -3,6 +3,8 @@ package com.kinoxp.demo.controller;
 import com.kinoxp.demo.model.User;
 import com.kinoxp.demo.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -13,7 +15,7 @@ public class UserRestController {
 
     private UserRepository userRepository;
 
-    // @PostMapping(value="/newuser")
+    // @PostMapping(value="/newuser", consumes = "application/json")
     // @ResponseStatus(HttpStatus.CREATED)
     // public User newuser(@RequestBody User user) {
 
