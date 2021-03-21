@@ -35,6 +35,20 @@ public class MovieController {
         return showMovieList(1, movie);
     }
 
+    @GetMapping("/movieFormUpdate/{movieid}")
+    public String movieFormUpdate(@PathVariable(value = "movieid") int movieid, Model model) {
+
+        try {
+            Movie movie = movieService.getMovieById(movieid);
+
+            model.addAttribute("movie", movie);
+        } catch (Exception e) {
+            System.out.println("Error can't update user profile " + e);
+        }
+
+        return "updateuser";
+    }
+
     @GetMapping("/movie/{movieNo}")
     public String showMovieList(@PathVariable(value = "movieNo") int pageNo, Model model) {
 

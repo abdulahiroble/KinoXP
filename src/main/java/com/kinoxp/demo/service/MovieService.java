@@ -5,4 +5,6 @@ import org.springframework.data.domain.Page;
 
 public interface MovieService {
         Page<Movie> showMovieList(int pageNo, int pageSize);
+
+        Movie getMovieById(int movieid);
 }

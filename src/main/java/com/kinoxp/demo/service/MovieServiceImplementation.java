@@ -21,6 +21,19 @@ public class MovieServiceImplementation implements MovieService {
     private MovieRepository movieRepository;
 
     @Override
+    public Movie getMovieById(int movieid) {
+        Optional<Movie> optional = movieRepository.findById(movieid);
+        Movie user = null;
+
+        if (optional.isPresent()) {
+            user = optional.get();
+        } else {
+            throw new RuntimeException(" User not found by id " + movieid);
+        }
+        return user;
+    }
+
+    @Override
     public Page<Movie> showMovieList(int pageNo, int pageSize) {
 
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
