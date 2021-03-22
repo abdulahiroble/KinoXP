@@ -9,7 +9,7 @@ public class Movie {
     private int movieid;
 
     private String title;
-    private String genre;
+
     private String actor;
     private int age;
     private int length;
@@ -17,9 +17,8 @@ public class Movie {
     private int time;
     private String hall;
 
-    public Movie (String title, String genre, String actor, int age, int length, String date, int time, String hall) {
+    public Movie (String title, String actor, int age, int length, String date, int time, String hall) {
         this.title = title;
-        this.genre = genre;
         this.actor = actor;
         this.age = age;
         this.length = length;
@@ -48,14 +47,6 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getActor() {
