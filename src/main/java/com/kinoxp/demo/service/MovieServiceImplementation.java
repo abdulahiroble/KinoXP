@@ -39,4 +39,6 @@ public class MovieServiceImplementation implements MovieService {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
         return this.movieRepository.findAll(pageable);
     }
+
+
 }

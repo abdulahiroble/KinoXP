@@ -1,6 +1,7 @@
 package com.kinoxp.demo.controller;
 
 import com.kinoxp.demo.model.Movie;
+import com.kinoxp.demo.repositories.MovieRepository;
 import com.kinoxp.demo.service.MovieService;
 
 import org.springframework.stereotype.Controller;
@@ -67,8 +68,6 @@ public class MovieController {
 
         return "seemovie";
     }
-    
-
 
     }
 
