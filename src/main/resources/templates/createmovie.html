@@ -59,9 +59,22 @@
       
         <h1 style="color: white; letter-spacing: 5px; padding: 10px;">SPILLER NU</h1>
 
-      <form action="#" th:action="@{/newmovie}" class="logincreateform" method="post" th:object="${movie}">
+      <!-- <form action="#" th:action="@{/newmovie}" class="logincreateform" method="post" th:object="${movie}">
+
+          <select class="form-control" id="userInfo" name="firstname">
+            <option label=" ">none</option>
+            <option
+              th:each="genre : ${listGenre}"
+              th:value="${genre.getGenre()}"
+              th:text="${genre.getGenre()}"
+            ></option>
+          </select>
+    
+
           <label for="title">Titel</label><br />
           <input type="text" id="title" th:field="*{title}" name="title"/><br /><br />
+
+
 
           <label for="genre">Genre</label><br />
           <input type="text" id="genre" th:field="*{genre}" name="genre"/><br /><br />
@@ -85,8 +98,32 @@
           <input type="text" id="actor" th:field="*{actor}" name="actor" /><br /><br />
 
           <input type="submit" value="Opret film" />
-      </form>
+      </form> -->
 
+
+
+
+
+      <form action="/newmovie" method="post" name="firstform">
+        <div class="col" style="text-align: left">
+          <div>
+            <h3>Vælg employee</h3>
+            <select class="form-control" id="userInfo" name="firstname">
+              <option label=" ">none</option>
+              <option
+                th:each="movie : ${listGenre}"
+                th:value="${movie.genre}"
+                th:text="${movie.genre}"
+              ></option>
+            </select>
+            <br />
+
+  
+            <input type="submit" value="Add to task" />
+          </div>
+        </div>
+      </form>
+      <br /><br/><br/>
         
 </body>
 </html>
