@@ -6,6 +6,8 @@ import javax.persistence.*;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column(name = "movieid")
     private int movieid;
 
     private String title;
@@ -17,7 +19,11 @@ public class Movie {
     private int time;
     private String hall;
 
-    public Movie (String title, String actor, int age, int length, String date, int time, String hall) {
+    // @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL)
+    // @PrimaryKeyJoinColumn
+    // private Genre genre;
+
+    public Movie(String title, String actor, int age, int length, String date, int time, String hall) {
         this.title = title;
         this.actor = actor;
         this.age = age;
@@ -25,11 +31,17 @@ public class Movie {
         this.date = date;
         this.time = time;
         this.hall = hall;
-
     }
 
+    // public void setGenre(Genre genre) {
+    // this.genre = genre;
+    // }
 
-    public Movie () {
+    // public Genre getGenre() {
+    // return genre;
+    // }
+
+    public Movie() {
 
     }
 

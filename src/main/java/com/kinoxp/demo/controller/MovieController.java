@@ -1,6 +1,8 @@
 package com.kinoxp.demo.controller;
 
+import com.kinoxp.demo.model.Genre;
 import com.kinoxp.demo.model.Movie;
+import com.kinoxp.demo.repositories.GenreRepository;
 import com.kinoxp.demo.repositories.MovieRepository;
 import com.kinoxp.demo.service.MovieService;
 
@@ -17,17 +19,33 @@ public class MovieController {
 
     @Autowired
     private MovieService movieService;
+    private GenreRepository genreRepository;
 
-    
     @GetMapping("/createmovie")
-    public String createmovie(Model movie) {
+    public String createmovie(Model movie, Model genre) {
 
         movie.addAttribute("movie", new Movie());
+
+        // Page<Genre> page = movieService.showGenreLists();
+
+        // List<Genre> listGenre = genreRepository.findAll();
+
+        // genre.addAttribute("listGenre", listGenre);
+
+        // genre.addAttribute("genre", new Genre());
 
         return "createmovie";
     }
 
-        
+    public List<Genre> showGenreLists(Model genre) {
+
+        List<Genre> listGenre = genreRepository.findAll();
+
+        genre.addAttribute("listGenre", listGenre);
+
+        return genreRepository.findAll();
+    }
+
     @GetMapping("/seemovie")
     public String seemovie(Model movie) {
 
@@ -58,9 +76,15 @@ public class MovieController {
 
             Page<Movie> page = movieService.showMovieList(pageNo, pageSize);
 
+            // Page<Genre> pages = movieService.showGenreLists(pageNo, pageSize);
+
             List<Movie> listMovie = page.getContent();
 
+            // List<Genre> listGenre = pages.getContent();
+
             model.addAttribute("listMovie", listMovie);
+
+            // model.addAttribute("listGenre", listGenre);
 
         } catch (Exception e) {
             System.out.println("Error can't load up list " + e);
@@ -69,5 +93,16 @@ public class MovieController {
         return "seemovie";
     }
 
-    }
+    // @GetMapping("/createmovie")
+    // public String showGenreList(Model genre) {
 
+    // // Page<Genre> pages = movieService.showGenreList();
+
+    // List<Genre> listGenre = movieService.showGenreLists();
+
+    // genre.addAttribute("listGenre", listGenre);
+
+    // return "createmovie";
+    // }
+
+}
