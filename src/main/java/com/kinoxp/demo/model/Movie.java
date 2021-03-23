@@ -35,7 +35,20 @@ public class Movie {
 
 
 
-    // @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "genreid")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "genreid")
+    private Genre genre;
+
+    public Movie(String title, String actor, int age, int length, Genre genre) {
+        this.title = title;
+        this.actor = actor;
+        this.age = age;
+        this.length = length;
+        this.genre = genre;
+    }
+
+// @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL)
     // @PrimaryKeyJoinColumn
     // private Genre genre;
 
@@ -53,6 +66,8 @@ public class Movie {
     // public Genre getGenre() {
     // return genre;
     // }
+
+
 
     public Movie() {
 
@@ -105,5 +120,7 @@ public class Movie {
 
     public void setScreenings(Set<Screening> screenings) { this.screenings = screenings; }
 
+    public Genre getGenre() { return genre; }
 
+    public void setGenre(Genre genre) { this.genre = genre; }
 }

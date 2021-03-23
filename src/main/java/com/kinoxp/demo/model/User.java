@@ -1,6 +1,12 @@
 package com.kinoxp.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -19,6 +25,18 @@ public class User {
     private int age;
 
 
+    public User(String firstname, String lastname, String username, String email, String password, boolean active, String roles, int phone, int age) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.active = active;
+        this.roles = roles;
+        this.phone = phone;
+        this.age = age;
+    }
+
     public User (String firstname, String lastname, String username, String email, String password, Boolean active, String roles, int phone, int age) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -31,14 +49,30 @@ public class User {
         this.age = age;
     }
 
+    @OneToMany
+    @JoinColumn(name = "userid")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "reservationid")
+    private Set<Reservation> reservation = new HashSet<>();
+
+
     public User () {
 
     }
 
 
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userid);
+    }
+
     public int getUserid() {
         return userid;
     }
+
+    public Set<Reservation> getReservation() { return reservation; }
+
+    public void setReservation(Set<Reservation> reservation) { this.reservation = reservation; }
 
     public void setUserid(int userid) {
         this.userid = userid;

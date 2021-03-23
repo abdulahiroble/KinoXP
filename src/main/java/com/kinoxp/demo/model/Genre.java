@@ -1,16 +1,12 @@
 package com.kinoxp.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Genre {
@@ -19,21 +15,21 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int genreid;
 
+    @Column(name="genre")
     private String genre;
 
-    // @OneToOne
-    // @MapsId
-    // @JoinColumn(name = "genreid")
-    // @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-    // property = "genreid")
-    // private Movie movie;
 
-    public Genre() {
-
-    }
+    @OneToMany
+    @JoinColumn(name = "genreid")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "movieid")
+    private Set<Movie> movie = new HashSet<>();
 
     public Genre(String genre) {
         this.genre = genre;
+    }
+
+    public Genre() {
+
     }
 
     public int getGenreid() {
@@ -50,5 +46,13 @@ public class Genre {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public Set<Movie> getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Set<Movie> movie) {
+        this.movie = movie;
     }
 }
