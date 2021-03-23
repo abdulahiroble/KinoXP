@@ -2,7 +2,9 @@ package com.kinoxp.demo.controller;
 
 import java.util.List;
 
+import com.kinoxp.demo.model.Genre;
 import com.kinoxp.demo.model.Movie;
+import com.kinoxp.demo.repositories.GenreRepository;
 import com.kinoxp.demo.repositories.MovieRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class MovieRestController {
     @Autowired
     private MovieRepository movieRepository;
 
+    @Autowired
+    private GenreRepository genreRepository;
+
     @PostMapping("/newmovie")
     @ResponseStatus(HttpStatus.CREATED)
     public Movie newmovie(@ModelAttribute("movie") Movie movie) {
@@ -40,6 +45,11 @@ public class MovieRestController {
     @GetMapping("/movies")
     public List<Movie> findAllMovies() {
         return movieRepository.findAll();
+    }
+
+    @GetMapping("/genres")
+    public List<Genre> findAllGenres() {
+        return genreRepository.findAll();
     }
 
 }

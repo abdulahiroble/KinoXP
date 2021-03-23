@@ -2,12 +2,12 @@ let dropdown = document.getElementById('locality-dropdown');
 dropdown.length = 0;
 
 let defaultOption = document.createElement('option');
-defaultOption.text = 'Choose Movies';
+defaultOption.text = 'Choose genre';
 
 dropdown.add(defaultOption);
 dropdown.selectedIndex = 0;
 
-const url = 'http://localhost:8080/movies';
+const url = 'http://localhost:8080/genres';
 
 fetch(url)
     .then(
@@ -26,8 +26,7 @@ fetch(url)
 
                 for (let i = 0; i < data.length; i++) {
                     option = document.createElement('option');
-                    option.text = data[i].title;
-                    option.value = data[i].length;
+                    option.text = data[i].genre;
                     dropdown.add(option);
                 }
             });
