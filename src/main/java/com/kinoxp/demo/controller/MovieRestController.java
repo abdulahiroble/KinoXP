@@ -1,10 +1,10 @@
 package com.kinoxp.demo.controller;
 
-import com.kinoxp.demo.model.Genre;
 import com.kinoxp.demo.model.Movie;
 import com.kinoxp.demo.repositories.MovieRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(value = "*")
 public class MovieRestController {
 
     @Autowired
     private MovieRepository movieRepository;
-    private Genre genre;
 
     @PostMapping("/newmovie")
     @ResponseStatus(HttpStatus.CREATED)
@@ -32,9 +32,13 @@ public class MovieRestController {
         // return "redirect:/register_success";
 
         System.out.println(movie);
+        return movieRepository.save(movie);
+    }
 
-        // genre.setGenre(movie);
-
+    @PostMapping(value = "/newmoviejs", consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Movie newmoviejs(@RequestBody Movie movie) {
+        System.out.println(movie);
         return movieRepository.save(movie);
     }
 

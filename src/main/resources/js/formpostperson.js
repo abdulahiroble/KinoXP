@@ -94,7 +94,7 @@ async function postFormDataAsJson({ url, formData }) {
     };
 
     //vi kunne også få vores url fra action attribut i form
-    const posturl = "http://localhost:8080/persons";
+    const posturl = "http://localhost:8080/newmoviejs";
 
     //fordi vi er indeni en function prefixed med async, så kan vi kalde fetch med await, så bliver stående til færdig.
     //Det jeg kalder for et synkront kald

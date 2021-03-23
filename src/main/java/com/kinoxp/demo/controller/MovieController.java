@@ -2,6 +2,7 @@ package com.kinoxp.demo.controller;
 
 import com.kinoxp.demo.model.Genre;
 import com.kinoxp.demo.model.Movie;
+import com.kinoxp.demo.repositories.GenreRepository;
 import com.kinoxp.demo.repositories.MovieRepository;
 import com.kinoxp.demo.service.MovieService;
 
@@ -18,6 +19,7 @@ public class MovieController {
 
     @Autowired
     private MovieService movieService;
+    private GenreRepository genreRepository;
 
     @GetMapping("/createmovie")
     public String createmovie(Model movie, Model genre) {
@@ -26,13 +28,22 @@ public class MovieController {
 
         // Page<Genre> page = movieService.showGenreLists();
 
-        // List<Genre> listMovie = page.getContent();
+        // List<Genre> listGenre = genreRepository.findAll();
 
-        genre.addAttribute("listGenre", new Genre());
+        // genre.addAttribute("listGenre", listGenre);
 
         // genre.addAttribute("genre", new Genre());
 
         return "createmovie";
+    }
+
+    public List<Genre> showGenreLists(Model genre) {
+
+        List<Genre> listGenre = genreRepository.findAll();
+
+        genre.addAttribute("listGenre", listGenre);
+
+        return genreRepository.findAll();
     }
 
     @GetMapping("/seemovie")
@@ -65,7 +76,7 @@ public class MovieController {
 
             Page<Movie> page = movieService.showMovieList(pageNo, pageSize);
 
-            // Page<Genre> pages = movieService.showGenreList(pageNo, pageSize);
+            // Page<Genre> pages = movieService.showGenreLists(pageNo, pageSize);
 
             List<Movie> listMovie = page.getContent();
 
