@@ -1,36 +1,49 @@
 package com.kinoxp.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
+@Table(name="movie")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "movieid")
-    private int movieid;
+    private Integer movieid;
 
+    @Column(name="title")
     private String title;
 
+    @Column(name="actor")
     private String actor;
+
+    @Column(name="age")
     private int age;
+
+    @Column(name="length")
     private int length;
-    private String date;
-    private int time;
-    private String hall;
+
+    @OneToMany
+    @JoinColumn(name = "movieid")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "screeningid")
+    private Set<Screening> screenings = new HashSet<>();
+
+
 
     // @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL)
     // @PrimaryKeyJoinColumn
     // private Genre genre;
 
-    public Movie(String title, String actor, int age, int length, String date, int time, String hall) {
+    public Movie(String title, String actor, int age, int length) {
         this.title = title;
         this.actor = actor;
         this.age = age;
         this.length = length;
-        this.date = date;
-        this.time = time;
-        this.hall = hall;
     }
 
     // public void setGenre(Genre genre) {
@@ -44,6 +57,9 @@ public class Movie {
     public Movie() {
 
     }
+
+    @Override
+    public int hashCode() { return Objects.hash(movieid); }
 
     public int getMovieid() {
         return movieid;
@@ -85,28 +101,9 @@ public class Movie {
         this.length = length;
     }
 
-    public String getDate() {
-        return date;
-    }
+    public Set<Screening> getScreenings() { return screenings; }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+    public void setScreenings(Set<Screening> screenings) { this.screenings = screenings; }
 
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-
-    public String getHall() {
-        return hall;
-    }
-
-    public void setHall(String hall) {
-        this.hall = hall;
-    }
 
 }
