@@ -1,5 +1,9 @@
 package com.kinoxp.demo.repositories;
 
-public class ScreeningRepositoy {
+import com.kinoxp.demo.model.Screening;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ScreeningRepositoy extends JpaRepository<Screening, Integer> {
 
 }

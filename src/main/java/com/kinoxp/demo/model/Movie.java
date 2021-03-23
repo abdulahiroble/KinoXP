@@ -9,31 +9,29 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name="movie")
+@Table(name = "movie")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "movieid")
-    private Integer movieid;
+    private int movieid;
 
-    @Column(name="title")
+    @Column(name = "title")
     private String title;
 
-    @Column(name="actor")
+    @Column(name = "actor")
     private String actor;
 
-    @Column(name="age")
+    @Column(name = "age")
     private int age;
 
-    @Column(name="length")
+    @Column(name = "length")
     private int length;
 
     @OneToMany
     @JoinColumn(name = "movieid")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "screeningid")
     private Set<Screening> screenings = new HashSet<>();
-
-
 
     @ManyToOne
     @JoinColumn(name = "genreid")
@@ -48,7 +46,7 @@ public class Movie {
         this.genre = genre;
     }
 
-// @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL)
+    // @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL)
     // @PrimaryKeyJoinColumn
     // private Genre genre;
 
@@ -67,17 +65,27 @@ public class Movie {
     // return genre;
     // }
 
-
-
     public Movie() {
 
     }
 
     @Override
-    public int hashCode() { return Objects.hash(movieid); }
+    public int hashCode() {
+        return Objects.hash(movieid);
+    }
 
     public int getMovieid() {
         return movieid;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object)
+            return true;
+        if (object == null || getClass() != object.getClass())
+            return false;
+        Movie movie = (Movie) object;
+        return Objects.equals(movieid, movie.movieid);
     }
 
     public void setMovieid(int movieid) {
@@ -116,11 +124,19 @@ public class Movie {
         this.length = length;
     }
 
-    public Set<Screening> getScreenings() { return screenings; }
+    public Set<Screening> getScreenings() {
+        return screenings;
+    }
 
-    public void setScreenings(Set<Screening> screenings) { this.screenings = screenings; }
+    public void setScreenings(Set<Screening> screenings) {
+        this.screenings = screenings;
+    }
 
-    public Genre getGenre() { return genre; }
+    public Genre getGenre() {
+        return genre;
+    }
 
-    public void setGenre(Genre genre) { this.genre = genre; }
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
 }

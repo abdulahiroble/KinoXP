@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -16,13 +16,15 @@ public class Screening {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer screeningid;
+    private int screeningid;
 
+    @Column(name = "screendt")
     private Date screeningDate;
+
+    @Column(name = "screentm")
     private Time screeningTime;
+
     private int hall;
-
-
 
     @ManyToOne
     @JoinColumn(name = "movieid")
@@ -44,7 +46,17 @@ public class Screening {
         this.hall = hall;
     }
 
-    public Screening(java.sql.Date screeningDate, Time screeningTime, Movie movie, int hall) {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Screening screening = (Screening) o;
+        return Objects.equals(screeningid, screening.screeningid);
+    }
+
+    public Screening(Date screeningDate, Time screeningTime, Movie movie, int hall) {
         this.screeningDate = screeningDate;
         this.screeningTime = screeningTime;
         this.hall = hall;
@@ -52,17 +64,23 @@ public class Screening {
     }
 
     @Override
-    public int hashCode() { return Objects.hash(screeningid); }
+    public int hashCode() {
+        return Objects.hash(screeningid);
+    }
 
-    public Set<Reservation> getReservation() { return reservation; }
+    public Set<Reservation> getReservation() {
+        return reservation;
+    }
 
-    public void setScreenings(Set<Reservation> reservation) { this.reservation = reservation; }
+    public void setScreenings(Set<Reservation> reservation) {
+        this.reservation = reservation;
+    }
 
-    public Integer getScreeningid() {
+    public int getScreeningid() {
         return screeningid;
     }
 
-    public void setScreeningid(Integer screeningid) {
+    public void setScreeningid(int screeningid) {
         this.screeningid = screeningid;
     }
 
@@ -84,6 +102,14 @@ public class Screening {
 
     public int getHall() {
         return hall;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     public void setHall(int hall) {
