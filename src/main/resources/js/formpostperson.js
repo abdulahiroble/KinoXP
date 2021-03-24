@@ -78,6 +78,7 @@ async function submitFormAsync(mouseEvent) {
 async function postFormDataAsJson({ url, formData }) {
 
     const plainFormData = Object.fromEntries(formData.entries());
+
     const formDataJsonString = JSON.stringify(plainFormData);
     out(plainFormData);
     out(formDataJsonString); // this is the string that we will send to the server
