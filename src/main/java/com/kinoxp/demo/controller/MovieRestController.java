@@ -1,6 +1,7 @@
 package com.kinoxp.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.kinoxp.demo.model.Genre;
 import com.kinoxp.demo.model.Movie;
@@ -11,9 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,11 +25,18 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(value = "*")
 public class MovieRestController {
 
-    @Autowired
-    private MovieRepository movieRepository;
+    MovieRepository movieRepository;
 
-    @Autowired
-    private GenreRepository genreRepository;
+    GenreRepository genreRepository;
+
+    // ScreeningRepositoy screeningRepository;
+
+    // MovieRepository movieRepository;
+
+    public MovieRestController(GenreRepository genreRepository, MovieRepository movieRepository) {
+        this.genreRepository = genreRepository;
+        this.movieRepository = movieRepository;
+    }
 
     @PostMapping("/newmovie")
     @ResponseStatus(HttpStatus.CREATED)
@@ -35,10 +46,33 @@ public class MovieRestController {
         return movieRepository.save(movie);
     }
 
+    @GetMapping("/genre/{id}")
+    public ResponseEntity<Genre> findGenreById(@PathVariable Integer id, Model genres) {
+        Optional<Genre> genre = genreRepository.findById(id);
+
+        genres.addAttribute("genre", genre);
+
+        if (genre.isPresent()) {
+            Genre realGenre = genre.get();
+            return new ResponseEntity<>(realGenre, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping(value = "/newmoviejs", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Movie newmoviejs(@RequestBody Movie movie) {
-        System.out.println(movie);
+    public Movie newmoviejs(@RequestBody Movie movie, Model model) {
+
+        // Movie movie2 = new Movie(movie.getActor(), movie.getTitle(), movie.getAge(),
+        // movie.getLength());
+
+        // int genre2 = (movie.getGenre().getGenreid());
+
+        // movie.setGenre(genre2);
+
+        // model.addAttribute("genre2", genre2);
+
         return movieRepository.save(movie);
     }
 

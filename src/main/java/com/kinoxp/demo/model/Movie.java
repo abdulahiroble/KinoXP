@@ -51,6 +51,7 @@ public class Movie {
     // private Genre genre;
 
     public Movie(String title, String actor, int age, int length) {
+        super();
         this.title = title;
         this.actor = actor;
         this.age = age;
