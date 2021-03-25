@@ -13,6 +13,7 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "genreid")
     private int genreid;
 
     @Column(name = "genre")
@@ -24,16 +25,8 @@ public class Genre {
     private Set<Movie> movie = new HashSet<>();
 
     public Genre(String genre) {
-        super();
         this.genre = genre;
     }
-
-    // public Genre(String string, Movie movie) {
-
-    // }
-
-    // public Genre(int genreid, Movie movie) {
-    // }
 
     public Genre() {
 

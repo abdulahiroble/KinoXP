@@ -24,15 +24,23 @@ public class UserRestController {
     public User newuser(@ModelAttribute("user") User user) {
 
         // try {
-        //     userRepository.save(user);
+        // userRepository.save(user);
         // } catch (Exception e) {
-        //     System.out.println("Error can't save to database " + e);
+        // System.out.println("Error can't save to database " + e);
         // }
-    
+
         // return "redirect:/register_success";
-        
+
         System.out.println(user);
         return userRepository.save(user);
     }
-    
+
+    @PostMapping(value = "/newuserjs", consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User newmoviejs(@RequestBody User user, Model model) {
+
+        System.out.println(user);
+        return userRepository.save(user);
+    }
+
 }

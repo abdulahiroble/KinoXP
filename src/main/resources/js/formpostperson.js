@@ -34,12 +34,6 @@ async function submitFormAsync(mouseEvent) {
     const url = form1.action; // hvis action i jeres form header så er den her, og bliver ikke udført hvis preventDefault() er kaldt
     out(url);
 
-    /**
-     * This takes all the fields in the form and makes their values
-     * available through a `FormData` instance.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/FormData
-     */
     const formData = new FormData(form1);
 
     out(formData);
@@ -55,17 +49,14 @@ async function submitFormAsync(mouseEvent) {
 
         //responseData er et json object
         // nu skal vi finde ud af hvad vi gør med svaret fra server, som jo er det nye indsatte objekt
-        console.log({ responseData });
+        console.log(responseData);
         //window.name.minNyePerson = responseData;  det virker ikke
         //window.name = {"json": responseData};
-        window.localStorage.setItem("json1", { responseData }); //virker ikke , localStorage tager kun stringe i setItem (string,string)
-        localStorage.setItem("nameKurt", "Kurt Larsen"); // window er global så vi kan nøjes med at skrive localStorage
-        localStorage.setItem("name", responseData.name);
-        localStorage.setItem("location", responseData.location);
-        localStorage.setItem("birthDate", responseData.birthDate);
-
-        await sov(3000); // vi kan lige kigge på console output i 5sek. Så bliver console blanket og vi kommer til ny skærm
-        window.location = "personindsat.html";
+        // window.localStorage.setItem("json1", { responseData }); //virker ikke , localStorage tager kun stringe i setItem (string,string)
+        // localStorage.setItem("nameKurt", "Kurt Larsen"); // window er global så vi kan nøjes med at skrive localStorage
+        localStorage.setItem("hihi", responseData.genreid);
+        // localStorage.setItem("location", responseData.location);
+        // localStorage.setItem("birthDate", responseData.birthDate);
 
     } catch (error) {
         console.error(error);
@@ -102,8 +93,11 @@ async function postFormDataAsJson({ url, formData }) {
     const responseData = await fetch(posturl, requestOptions);
 
     out("responseData=");
+
     out(responseData);
+
     const responseJson = await responseData.json();
+
     out("responseJson");
     out(responseJson);
     return responseJson;

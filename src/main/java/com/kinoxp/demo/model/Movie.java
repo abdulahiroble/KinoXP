@@ -1,6 +1,8 @@
 package com.kinoxp.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -9,7 +11,6 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "movie")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +34,12 @@ public class Movie {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "screeningid")
     private Set<Screening> screenings = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "genreid")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "genreid")
+    @JsonIgnore
+    @JsonBackReference(value = "genreid")
     private Genre genre;
+    // private Set<Genre> genres = new HashSet<>();
 
     public Movie(String title, String actor, int age, int length, Genre genre) {
         this.title = title;
@@ -58,17 +61,17 @@ public class Movie {
         this.length = length;
     }
 
-    // public void setGenre(Genre genre) {
-    // this.genre = genre;
-    // }
-
-    // public Genre getGenre() {
-    // return genre;
-    // }
-
     public Movie() {
 
     }
+
+    // public Set<Genre> getPhoneNumbers() {
+    // return genres;
+    // }
+
+    // public void setPhoneNumbers(Set<Genre> genres) {
+    // this.genres = genres;
+    // }
 
     @Override
     public int hashCode() {

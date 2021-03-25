@@ -64,14 +64,15 @@ public class MovieRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public Movie newmoviejs(@RequestBody Movie movie, Model model) {
 
-        // Movie movie2 = new Movie(movie.getActor(), movie.getTitle(), movie.getAge(),
-        // movie.getLength());
+        Genre genrex = movie.getGenre();
 
-        // int genre2 = (movie.getGenre().getGenreid());
+        int y = Integer.parseInt(genrex.getGenre());
 
-        // movie.setGenre(genre2);
+        genrex.setGenreid(y);
 
-        // model.addAttribute("genre2", genre2);
+        // int x = Integer.parseInt(genrex.setGenreid(movie.getGenre().getGenreid()));
+
+        // movie.getGenre().setGenre(genrex);
 
         return movieRepository.save(movie);
     }
