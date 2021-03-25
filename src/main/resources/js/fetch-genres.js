@@ -3,8 +3,6 @@ dropdown.length = 0;
 
 let defaultOption = document.createElement('option');
 defaultOption.text = 'Choose genre';
-defaultOption.value = 'genreid';
-defaultOption.title = "genreid";
 
 dropdown.add(defaultOption);
 dropdown.selectedIndex = 0;
@@ -29,9 +27,12 @@ fetch(url)
                 for (let i = 0; i < data.length; i++) {
                     option = document.createElement('option');
                     option.text = data[i].genre;
-                    dropdown.add(option);
-                    // parseInt(dropdown.add(option));
+                    option.value = data[i].genreid;
+                    // dropdown.add(option);
+                    parseInt(dropdown.add(option));
                 }
+
+                // option.value = data.genreid;
             });
         }
     )

@@ -38,7 +38,7 @@ fetch(url)
                     row.appendChild(cellA).style.width = "500px"
                     row.appendChild(cellB).style.width = "500px"
                     row.appendChild(cellC).style.width = "500px"
-                    row.appendChild(cellD).style.width = "400px"
+                    row.appendChild(cellD).style.width = "500px"
                 }
             });
         }
