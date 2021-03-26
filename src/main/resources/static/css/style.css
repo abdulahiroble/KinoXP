@@ -38,6 +38,7 @@ html {
     overflow: hidden;
     background-color: black;
     display: flex;
+    justify-content: space-evenly;
     letter-spacing: 3px;
     text-transform: uppercase;
   }
