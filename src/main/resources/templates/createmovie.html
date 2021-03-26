@@ -35,7 +35,7 @@
         <li style="margin-top: 3%;">
           <a
             href="/upcoming"
-            style="color: white; text-decoration: none; font-size: 20px; font-weight: normal; padding-left: 20px; padding-right: 20px;"
+            style="color: white; text-decoration: none; font-size: 20px; font-weight: normal"
             >Kommende film</a
           >
         </li>
@@ -71,12 +71,6 @@
           <label for="length">Længde</label><br />
           <input type="number"  id="length" th:field="*{length}" name="length"/><br /><br />
 
-          <label for="hall">Sal</label><br />
-          <input type="text"  id="hall" th:field="*{hall}" name="hall"/><br /><br />
-
-          <label for="date">Dato</label><br />
-          <input type="text"  id="date" th:field="*{date}" name="date" /><br /><br />
-
           <label for="age">Aldersgrænse</label><br />
           <input type="number" id="age" th:field="*{age}" name="age" /><br /><br />
 
@@ -86,30 +80,5 @@
           <input type="submit" value="Opret film" />
       </form>
 
-
-
-
-
-      <!-- <form action="/newmovie" method="post" name="firstform">
-        <div class="col" style="text-align: left">
-          <div>
-            <h3>Vælg employee</h3>
-            <select class="form-control" id="userInfo" name="firstname">
-              <option label=" ">none</option>
-              <option
-                th:each="genre : ${listGenre}"
-                th:value="${genre.genre}"
-                th:text="${genre.genre}"
-              ></option>
-            </select>
-            <br />
-
-  
-            <input type="submit" value="Add to task" />
-          </div>
-        </div>
-      </form>
-      <br /><br/><br/>
-         -->
 </body>
 </html>

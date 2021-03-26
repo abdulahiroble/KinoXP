@@ -34,7 +34,7 @@
     <li style="margin-top: 3%;">
       <a
         href="/upcoming"
-        style="color: white; text-decoration: none; font-size: 20px; font-weight: normal; padding-left: 20px; padding-right: 20px;"
+        style="color: white; text-decoration: none; font-size: 20px; font-weight: normal"
         >Kommende film</a
       >
     </li>
@@ -56,15 +56,21 @@
   </ul>
   <br />
 
-    <form action="#" enctype='application/x-www-form-urlencoded' id="personform" method="post">
+    <form action="#" enctype='application/x-www-form-urlencoded' id="personform" method="post" class="logincreateform">
         <label for="title">Titel</label><br />
         <input type="text" id="title" name="title" value="spider" /><br /><br />
 
-        <!-- <input type="text" id="genre" name="genre" ><br /><br /> -->
+        <!-- <div class="select">
 
-        <select id="genreid" name="genre">
+        <select id="genreid" name="genre" id="standard-select"> -->
 
-        </select> <br /><br />
+          <label for="standard-select">Standard Select</label>
+    <div class="select">
+      <select name="genre" id="standard-select" style="width: 70%; margin-left: 16.9%; padding: 3px;">
+
+      </select>
+
+    </div> <br /><br />
 
         <label for="length">Længde</label><br />
         <input type="number" id="length" name="length" name="length" value="1" /><br /><br />

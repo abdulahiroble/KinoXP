@@ -1,4 +1,4 @@
-let dropdown = document.getElementById('genreid');
+let dropdown = document.getElementById('standard-select');
 dropdown.length = 0;
 
 let defaultOption = document.createElement('option');
