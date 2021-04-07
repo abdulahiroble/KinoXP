@@ -16,7 +16,12 @@ fetch(url)
 
                 var calendarEl = document.getElementById('calendar');
 
-                for (let key in data) {
+                data.map((test) => {
+
+                    console.log(test.screenings.map((test) => test.screeningDate))
+
+
+                    // console.log(data[key].screenings.map((date) => date.screeningDate))
 
                     var calendar = new FullCalendar.Calendar(calendarEl, {
                         initialView: 'dayGridMonth',
@@ -25,30 +30,29 @@ fetch(url)
                             center: 'title',
                             right: 'dayGridMonth,timeGridWeek,timeGridDay'
                         },
-                        events: [
-                            {
-                                title: data[key].title,
-                                start: '2021-04-12T10:30:00'
-                            },
-                            {
-                                title: data[key].title,
-                                start: '2021-04-12T12:00:00'
-                            },
-                            {
-                                title: data[key].title,
-                                start: '2021-04-12T14:30:00'
-                            },
-                            {
-                                title: data[key].title,
-                                start: '2021-04-13T07:00:00'
-                            }
-                        ]
+                        events: [{ title: test.title, start: '2021-04-19' }]
+                        // events: [
+                        //     {
+                        //         title: data[key].title,
+                        //         start: '2021-04-19'
+                        //         //start: data[key].screenings.map((date) => `${date.screeningDate}`)
+                        //     },
+                        //     {
+                        //         title: "hej",
+                        //         start: '2021-04-17'
+                        //         // start: data[key].screenings.map((date) => date.screeningDate)
+                        //     },
+                        // ]
                     });
 
 
-                }
 
-                calendar.render();
+
+                    calendar.render();
+
+
+                })
+
 
 
             });
