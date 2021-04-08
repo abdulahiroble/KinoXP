@@ -33,7 +33,7 @@
     </li>
     <li style="margin-top: 3%;">
       <a
-        href="/upcoming"
+        href="http://127.0.0.1:5500/src/main/resources/templates/createmovie-with-js.html"
         style="color: white; text-decoration: none; font-size: 20px; font-weight: normal"
         >Kommende film</a
       >
@@ -60,13 +60,16 @@
         <label for="title">Titel</label><br />
         <input type="text" id="title" name="title" /><br /><br />
 
-          <label for="standard-select">Standard Select</label>
-    <div class="select">
-      <select name="genre" id="standard-select" style="width: 70%; margin-left: 16.9%; padding: 3px;">
+          <label for="standard-select">Select Genre</label>
 
-      </select>
+            <div class="select">
+              <select name="genre" id="standard-select" style="width: 70%; margin-left: 16.9%; padding: 3px;">
 
-    </div> <br /><br />
+              </select>
+
+            </div> 
+            
+            <br /><br />
 
         <label for="length">Længde</label><br />
         <input type="number" id="length" name="length" name="length" /><br /><br />
@@ -80,7 +83,7 @@
         <input type="submit" value="Opret film" />
       </form>
 
-      <script src="../js/formpostperson.js"></script>
+      <script src="../js/formpostmovie.js"></script>
 
       <script src="../js/fetch-genres.js"></script>
     

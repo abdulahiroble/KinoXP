@@ -16,10 +16,11 @@ fetch(url)
 
                 var calendarEl = document.getElementById('calendar');
 
-                data.map((test) => {
+                data.map((calendar) => {
 
-                    console.log(test.screenings.map((test) => test.screeningDate))
+                    console.log(calendar)
 
+                    // console.log(test.screenings.map((test) => test.screeningDate))
 
                     // console.log(data[key].screenings.map((date) => date.screeningDate))
 
@@ -30,7 +31,7 @@ fetch(url)
                             center: 'title',
                             right: 'dayGridMonth,timeGridWeek,timeGridDay'
                         },
-                        events: [{ title: test.title, start: '2021-04-19' }]
+                        events: [{ title: calendar.title, start: '2021-04-19' }]
                         // events: [
                         //     {
                         //         title: data[key].title,
