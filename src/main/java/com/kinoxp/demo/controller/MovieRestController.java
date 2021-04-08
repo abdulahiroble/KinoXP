@@ -70,10 +70,6 @@ public class MovieRestController {
 
         genrex.setGenreid(y);
 
-        // int x = Integer.parseInt(genrex.setGenreid(movie.getGenre().getGenreid()));
-
-        // movie.getGenre().setGenre(genrex);
-
         return movieRepository.save(movie);
     }
 

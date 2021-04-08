@@ -21,6 +21,22 @@ public class MovieController {
     private MovieService movieService;
     private GenreRepository genreRepository;
 
+    @GetMapping("/moviecalendar")
+    public String movieCalendar(Model movie, Model genre) {
+
+        movie.addAttribute("movie", new Movie());
+
+        // Page<Genre> page = movieService.showGenreLists();
+
+        // List<Genre> listGenre = genreRepository.findAll();
+
+        // genre.addAttribute("listGenre", listGenre);
+
+        // genre.addAttribute("genre", new Genre());
+
+        return "moviecalendar";
+    }
+
     @GetMapping("/createmovie")
     public String createmovie(Model movie, Model genre) {
 

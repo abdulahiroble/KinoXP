@@ -58,7 +58,7 @@ alt="logo"
 </ul>
 
 <ul
-style="display: flex; flex-direction: column; background-color: black; width: 15%; height: 100vh"
+style="display: flex; flex-direction: column; background-color: black; width: 15%; min-height: 110vh"
 >
 <li>
   <a
@@ -99,10 +99,11 @@ style="display: flex; flex-direction: column; background-color: black; width: 15
 
 </ul>
 <br />
-<div>
-    <h1 style="color: white; letter-spacing: 5px; padding: 10px; ">OPRET EMPLOYEE</h1>
+  
 
+<!-- <h3 style="color: white; letter-spacing: 5px; padding: 10px; text-align: center;">OPRET EMPLOYEE</h3> -->
     <form action="#" th:action="@{/newuser}" class="adminform" method="post" th:object="${user}">
+
         <label for="firstname">Fornavn</label><br />
         <input type="text" id="firstname" th:field="*{firstname}" name="firstname"/><br /><br />
 
@@ -137,7 +138,6 @@ style="display: flex; flex-direction: column; background-color: black; width: 15
 
         <input type="submit" value="Opret profil" />
     </form>
-</div>
 
 
 

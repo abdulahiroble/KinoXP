@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">¨
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>KinoXP</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Create movie with js</title>
-</head>
-<body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
+    <script src="../js/moviecalendar.js"></script>
+  </head>
+  <body>
+
     <ul
     class="topnav"
   >
   <a href="#">  <img
+    th:src="@{img/KinoXPLogo.png}"
     class="logo"
     src="/src/main/resources/static/img/KinoXPLogo.png"
     style="
@@ -33,7 +37,7 @@
     </li>
     <li style="margin-top: 3%;">
       <a
-        href="http://127.0.0.1:5500/src/main/resources/templates/createmovie-with-js.html"
+        href="/upcoming"
         style="color: white; text-decoration: none; font-size: 20px; font-weight: normal"
         >Kommende film</a
       >
@@ -56,36 +60,7 @@
   </ul>
   <br />
 
-    <form action="#" enctype='application/x-www-form-urlencoded' id="personform" method="post" class="logincreateform">
-        <label for="title">Titel</label><br />
-        <input type="text" id="title" name="title" /><br /><br />
 
-          <label for="standard-select">Select Genre</label>
-
-            <div class="select">
-              <select name="genre" id="standard-select" style="width: 70%; margin-left: 16.9%; padding: 3px;">
-
-              </select>
-
-            </div> 
-            
-            <br /><br />
-
-        <label for="length">Længde</label><br />
-        <input type="number" id="length" name="length" name="length" /><br /><br />
-
-        <label for="age">Aldersgrænse</label><br />
-        <input type="number" id="age" name="age" name="age" /><br /><br />
-
-        <label for="actor">Skuespiller</label><br />
-        <input type="text" id="actor" name="actor" name="actor" /><br /><br />
-
-        <input type="submit" value="Opret film" />
-      </form>
-
-      <script src="../js/formpostmovie.js"></script>
-
-      <script src="../js/fetch-genres.js"></script>
-    
-</body>
+    <div id='calendar'></div>
+  </body>
 </html>

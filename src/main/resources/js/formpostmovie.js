@@ -1,7 +1,3 @@
-
-// kode taget fra denne artikkel
-//https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
-
 const out = function (str) { console.log(str); };
 
 const sov = (ms) => {

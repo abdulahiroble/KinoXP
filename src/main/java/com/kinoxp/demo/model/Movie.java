@@ -39,7 +39,6 @@ public class Movie {
     @JsonIgnore
     @JsonBackReference(value = "genreid")
     private Genre genre;
-    // private Set<Genre> genres = new HashSet<>();
 
     public Movie(String title, String actor, int age, int length, Genre genre) {
         this.title = title;

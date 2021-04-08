@@ -92,8 +92,9 @@ html {
   }
 
 .adminform {
+    margin-top: -50% !important;
+    margin: auto;
     width: 600px;
-    margin: -800px 800px 30px;
     padding: 10px;
     position: relative;
 
