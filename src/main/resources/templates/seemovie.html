@@ -86,7 +86,7 @@ alt="logo"
             <td th:text="${movie.actor}"></td>
               <td>
                   <a th:href="@{/movieFormUpdate/{movieid}(movieid=${movie.movieid})}" class="btn btn-primary">Update</a>
-                  <!-- <a th:href="@{/deleteUser/{id}(id=${user.id})}" class="btn btn-danger">Delete</a> -->
+                  <a th:href="@{/deletemovie/{movieid}(movieid=${movie.movieid})}" class="btn btn-danger">Delete</a>
               </td>
           </tr>
       </tbody>

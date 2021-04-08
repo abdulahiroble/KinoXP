@@ -9,7 +9,9 @@ import com.kinoxp.demo.service.MovieService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import java.util.List;
@@ -70,6 +72,18 @@ public class MovieController {
         return showMovieList(1, movie);
     }
 
+    @GetMapping("/deletemovie/{movieid}")
+    public String deletemovie(@PathVariable(value = "movieid") int movieid) {
+
+        try {
+            this.movieService.deletemovie(movieid);
+        } catch (Exception e) {
+            System.out.println("Error can't delete user " + e);
+        }
+
+        return "redirect:/seemovie";
+    }
+
     @GetMapping("/movieFormUpdate/{movieid}")
     public String movieFormUpdate(@PathVariable(value = "movieid") int movieid, Model model) {
 
@@ -81,7 +95,19 @@ public class MovieController {
             System.out.println("Error can't update user profile " + e);
         }
 
-        return "updateuser";
+        return "updatemovie";
+    }
+
+    @PostMapping("/savemovie")
+    public String savemovie(@ModelAttribute("movie") Movie movie) {
+
+        try {
+            movieService.savemovie(movie);
+        } catch (Exception e) {
+            System.out.println("Error can't save to database " + e);
+        }
+
+        return "redirect:/seemovie";
     }
 
     @GetMapping("/movie/{movieNo}")
@@ -108,17 +134,5 @@ public class MovieController {
 
         return "seemovie";
     }
-
-    // @GetMapping("/createmovie")
-    // public String showGenreList(Model genre) {
-
-    // // Page<Genre> pages = movieService.showGenreList();
-
-    // List<Genre> listGenre = movieService.showGenreLists();
-
-    // genre.addAttribute("listGenre", listGenre);
-
-    // return "createmovie";
-    // }
 
 }
