@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://java.sun.com/jsf/composite">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Update movie </title>
+  </head>
+
+  <body>
+    <form
+      class="form"
+      action="#"
+      th:action="@{/savemovie}"
+      th:object="${movie}"
+      method="POST"
+    >
+      <input type="hidden" th:field="*{movieid}" />
+
+      <label for="title">Titel:</label><br />
+      <input
+        type="text"
+        id="title"
+        th:field="*{title}"
+        name="title"
+      /><br /><br />
+
+      <input
+      type="number"
+      id="length"
+      th:field="*{length}"
+      name="length"
+    /><br /><br />
+
+    <input
+    type="number"
+    id="age"
+    th:field="*{age}"
+    name="age"
+  /><br /><br />
+
+  <input
+  type="text"
+  id="actor"
+  th:field="*{actor}"
+  name="actor"
+/><br /><br />
+
+      <button type="submit" class="btn btn-info col-2">Opdater film</button>
+    </form>
+  </body>
+</html>

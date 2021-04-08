@@ -24,6 +24,16 @@ public class MovieServiceImplementation implements MovieService {
     private GenreRepository genreRepository;
 
     @Override
+    public void savemovie(Movie movie) {
+        this.movieRepository.save(movie);
+    }
+
+    @Override
+    public void deletemovie(int movieid) {
+        this.movieRepository.deleteById(movieid);
+    }
+
+    @Override
     public Movie getMovieById(int movieid) {
         Optional<Movie> optional = movieRepository.findById(movieid);
         Movie user = null;
